@@ -82,9 +82,10 @@ public class DefaultNoteTagConverter extends BaseConverter {
 	 */
 	public final Elements convertElement(final StartElement start, final Note note) {
 
-		return new Elements(getEventFactory().createStartElement("", "", "body", start.getAttributes(), null),
-				getEventFactory().createEndElement("", "", "body"));
-
+//		return new Elements(getEventFactory().createStartElement("", "", "body", start.getAttributes(), null),
+//				getEventFactory().createEndElement("", "", "body"));
+		return new Elements(getEventFactory().createStartElement("", "", "div", start.getAttributes(), null),
+				getEventFactory().createEndElement("", "", "div"));
 	}
 
 	/**
@@ -93,7 +94,7 @@ public class DefaultNoteTagConverter extends BaseConverter {
 	public final List<XMLEvent> insertBefore(final StartElement start, final Note note) {
 
 		List<XMLEvent> result = new ArrayList<XMLEvent>();
-
+/*
 		result.add(getEventFactory().createStartElement("", "", HEAD, null, null));
 		result.add(getEventFactory().createStartElement(
 				"",
@@ -178,7 +179,7 @@ public class DefaultNoteTagConverter extends BaseConverter {
 		result.add(getEventFactory().createEndElement("", "", TITLE));
 
 		result.add(getEventFactory().createEndElement("", "", HEAD));
-
+*/
 		return result;
 	}
 

@@ -27,13 +27,11 @@ import static com.syncthemall.enml4j.util.Constants.CHARSET;
 import static com.syncthemall.enml4j.util.Constants.CRYPT;
 import static com.syncthemall.enml4j.util.Constants.HASH;
 import static com.syncthemall.enml4j.util.Constants.HEIGHT;
-import static com.syncthemall.enml4j.util.Constants.HTML;
 import static com.syncthemall.enml4j.util.Constants.MEDIA;
 import static com.syncthemall.enml4j.util.Constants.NOTE;
 import static com.syncthemall.enml4j.util.Constants.TODO;
 import static com.syncthemall.enml4j.util.Constants.TYPE;
 import static com.syncthemall.enml4j.util.Constants.WIDTH;
-import static com.syncthemall.enml4j.util.Constants.XMLNS;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -115,10 +113,10 @@ public class ENMLProcessor {
 	private static Logger log = Logger.getLogger(ENMLProcessor.class.getName());
 
 	/** XHTML Transitional doctype. */
-	private static final String XHTML_DOCTYPE = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">";
+//	private static final String XHTML_DOCTYPE = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">";
 
 	/** XHTML namespace. */
-	private static final String XHTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
+//	private static final String XHTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
 	private Map<String, Converter> converters = new HashMap<String, Converter>();
 	private Map<String, Converter> inlineConverters = new HashMap<String, Converter>();
@@ -362,7 +360,17 @@ public class ENMLProcessor {
 			}
 		}
 		noteToHTML(note, hashURLMap, baos, false);
-		return new String(baos.toByteArray(), Charset.forName(CHARSET));
+		String str =  new String(baos.toByteArray(), Charset.forName(CHARSET));
+		String upper = str.toUpperCase();
+		//take off xml header
+		final String xmlHeader = "<?xml version='1.0' encoding='UTF-8'?>".toUpperCase();
+		if( upper.indexOf(xmlHeader) >= 0 )
+		{
+			str = str.substring(upper.indexOf(xmlHeader) + xmlHeader.length());
+		}
+//		System.out.println(upper);
+//		System.out.println(xmlHeader);
+		return str;
 	}
 
 	/**
@@ -651,10 +659,14 @@ public class ENMLProcessor {
 		while (reader.hasNext()) {
 			XMLEvent event = (XMLEvent) reader.next();
 			if (event.getEventType() == XMLEvent.DTD) {
-				writer.add(eventFactory.createDTD(XHTML_DOCTYPE));
-				StartElement newElement = eventFactory.createStartElement("", "", HTML,
-						Arrays.asList(eventFactory.createAttribute(XMLNS, XHTML_NAMESPACE)).iterator(), null);
-				writer.add(newElement);
+				
+//				writer.add(eventFactory.createDTD(XHTML_DOCTYPE));
+//				StartElement newElement = eventFactory
+//						.createStartElement("", "", HTML,
+//								Arrays.asList(eventFactory.createAttribute(XMLNS, XHTML_NAMESPACE))
+//										.iterator(), null);
+//				writer.add(newElement);
+				
 			} else if (event.getEventType() == XMLEvent.START_ELEMENT) {
 
 				StartElement startElement = event.asStartElement();
