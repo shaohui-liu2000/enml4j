@@ -22,22 +22,21 @@
  */
 package com.syncthemall.enml4j.converter;
 
-import java.util.List;
-import java.util.Map;
+import com.evernote.edam.type.Note;
+import com.syncthemall.enml4j.util.Elements;
 
 import javax.xml.stream.XMLEventFactory;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-
-import com.evernote.edam.type.Note;
-import com.syncthemall.enml4j.util.Elements;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Base class to extends to creates custom converters for {@code <en-note>}, {@code <en-todo>} or {@code <en-crypt>}
  * ENML tags.
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public abstract class BaseConverter implements Converter {
 

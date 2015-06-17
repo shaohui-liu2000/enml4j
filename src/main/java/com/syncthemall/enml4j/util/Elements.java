@@ -28,7 +28,7 @@ import javax.xml.stream.events.StartElement;
 /**
  * A simple class to contain a {@code StartElement} and the corresponding {@code EndElement}.
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public class Elements {
 

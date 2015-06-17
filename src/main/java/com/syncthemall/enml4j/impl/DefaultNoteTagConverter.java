@@ -22,29 +22,16 @@
  */
 package com.syncthemall.enml4j.impl;
 
-import static com.syncthemall.enml4j.util.Constants.CHARSET;
-import static com.syncthemall.enml4j.util.Constants.CONTENT;
-import static com.syncthemall.enml4j.util.Constants.HEAD;
-import static com.syncthemall.enml4j.util.Constants.META;
-import static com.syncthemall.enml4j.util.Constants.NAME;
-import static com.syncthemall.enml4j.util.Constants.POSITION_ZERO;
-import static com.syncthemall.enml4j.util.Constants.TITLE;
-import static com.syncthemall.enml4j.util.Constants.VERSION;
-
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import javax.xml.stream.events.Characters;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
-
 import com.evernote.edam.type.Note;
 import com.syncthemall.enml4j.converter.BaseConverter;
 import com.syncthemall.enml4j.converter.Converter;
 import com.syncthemall.enml4j.util.Elements;
+
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Default {@code Converter} implementation to convert {@code <en-note>} ENML tags.
@@ -73,7 +60,7 @@ import com.syncthemall.enml4j.util.Elements;
  * @see <a href="http://dev.evernote.com/start/core/enml.php">Understanding the Evernote Markup Language</a>
  * @see <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnbdv.html">Streaming API for XML</a>
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public class DefaultNoteTagConverter extends BaseConverter {
 

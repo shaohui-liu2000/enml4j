@@ -28,7 +28,7 @@ package com.syncthemall.enml4j.util;
 /**
  * Constant class.
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public final class Constants {
 

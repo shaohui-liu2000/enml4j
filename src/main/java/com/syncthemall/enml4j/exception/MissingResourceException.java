@@ -22,16 +22,16 @@
  */
 package com.syncthemall.enml4j.exception;
 
-import java.text.MessageFormat;
-
 import com.evernote.edam.type.Note;
 import com.evernote.edam.type.Resource;
+
+import java.text.MessageFormat;
 
 /**
  * <em>Unchecked exceptions</em> Exception indicating an inconsistency between a resource referenced in the note content
  * and the {@link Resource} object list associated with the {@link Note}
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public final class MissingResourceException extends RuntimeException {
 

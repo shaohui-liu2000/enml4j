@@ -22,8 +22,7 @@
  */
 package com.syncthemall.enml4j.util;
 
-import static com.syncthemall.enml4j.util.Constants.BUFFER_SIZE;
-import static com.syncthemall.enml4j.util.Constants.CHARSET;
+import org.apache.commons.codec.binary.Base64;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -31,12 +30,13 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.codec.binary.Base64;
+import static com.syncthemall.enml4j.util.Constants.BUFFER_SIZE;
+import static com.syncthemall.enml4j.util.Constants.CHARSET;
 
 /**
  * An utility class to encode/decode file in base64.
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public final class Utils {
 

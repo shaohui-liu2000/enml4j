@@ -21,6 +21,25 @@
  * THE SOFTWARE.
  */
 package com.syncthemall.enml4j.impl;
+import com.evernote.edam.type.Note;
+import com.evernote.edam.type.Resource;
+import com.syncthemall.enml4j.converter.Converter;
+import com.syncthemall.enml4j.converter.MediaConverter;
+import com.syncthemall.enml4j.exception.MissingResourceException;
+import com.syncthemall.enml4j.util.Elements;
+import com.syncthemall.enml4j.util.Utils;
+
+import javax.xml.namespace.QName;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import static com.syncthemall.enml4j.util.Constants.A;
 import static com.syncthemall.enml4j.util.Constants.ALT;
 import static com.syncthemall.enml4j.util.Constants.BASE64;
@@ -34,26 +53,6 @@ import static com.syncthemall.enml4j.util.Constants.SRC;
 import static com.syncthemall.enml4j.util.Constants.STYLE;
 import static com.syncthemall.enml4j.util.Constants.TITLE;
 import static com.syncthemall.enml4j.util.Constants.TYPE;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import javax.xml.namespace.QName;
-import javax.xml.stream.events.Attribute;
-import javax.xml.stream.events.Characters;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
-
-import com.evernote.edam.type.Note;
-import com.evernote.edam.type.Resource;
-import com.syncthemall.enml4j.converter.Converter;
-import com.syncthemall.enml4j.converter.MediaConverter;
-import com.syncthemall.enml4j.exception.MissingResourceException;
-import com.syncthemall.enml4j.util.Elements;
-import com.syncthemall.enml4j.util.Utils;
 
 /**
  * Default {@code Converter} implementation to convert {@code <en-media>} ENML tags.
@@ -87,7 +86,7 @@ import com.syncthemall.enml4j.util.Utils;
  * @see <a href="http://dev.evernote.com/start/core/enml.php">Understanding the Evernote Markup Language</a>
  * @see <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnbdv.html">Streaming API for XML</a>
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public class DefaultMediaTagConverter extends MediaConverter {
 

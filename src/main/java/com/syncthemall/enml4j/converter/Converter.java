@@ -22,17 +22,16 @@
  */
 package com.syncthemall.enml4j.converter;
 
-import java.util.List;
-import java.util.Map;
+import com.evernote.edam.type.Note;
+import com.syncthemall.enml4j.util.Elements;
 
 import javax.xml.stream.XMLEventFactory;
 import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-
-import com.evernote.edam.type.Note;
-import com.syncthemall.enml4j.util.Elements;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Interface for every Converter.
@@ -48,7 +47,7 @@ import com.syncthemall.enml4j.util.Elements;
  * @see <a href="http://dev.evernote.com/start/core/enml.php">Understanding the Evernote Markup Language</a>
  * @see <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnbdv.html">Streaming API for XML</a>
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public interface Converter {
 

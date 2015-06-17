@@ -22,17 +22,32 @@
  */
 package com.syncthemall.enml4j;
 
-import static com.syncthemall.enml4j.util.Constants.ALT;
-import static com.syncthemall.enml4j.util.Constants.CHARSET;
-import static com.syncthemall.enml4j.util.Constants.CRYPT;
-import static com.syncthemall.enml4j.util.Constants.HASH;
-import static com.syncthemall.enml4j.util.Constants.HEIGHT;
-import static com.syncthemall.enml4j.util.Constants.MEDIA;
-import static com.syncthemall.enml4j.util.Constants.NOTE;
-import static com.syncthemall.enml4j.util.Constants.TODO;
-import static com.syncthemall.enml4j.util.Constants.TYPE;
-import static com.syncthemall.enml4j.util.Constants.WIDTH;
+import com.evernote.edam.type.Data;
+import com.evernote.edam.type.Note;
+import com.evernote.edam.type.Resource;
+import com.syncthemall.enml4j.converter.BaseConverter;
+import com.syncthemall.enml4j.converter.Converter;
+import com.syncthemall.enml4j.converter.MediaConverter;
+import com.syncthemall.enml4j.impl.DefaultCryptTagConverter;
+import com.syncthemall.enml4j.impl.DefaultInlineMediaTagConverter;
+import com.syncthemall.enml4j.impl.DefaultMediaTagConverter;
+import com.syncthemall.enml4j.impl.DefaultNoteTagConverter;
+import com.syncthemall.enml4j.impl.DefaultTodoTagConverter;
+import com.syncthemall.enml4j.util.Elements;
+import com.syncthemall.enml4j.util.Utils;
 
+import javax.xml.stream.XMLEventFactory;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLEventWriter;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLResolver;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.EndElement;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -48,32 +63,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.xml.stream.XMLEventFactory;
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLEventWriter;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLResolver;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Attribute;
-import javax.xml.stream.events.Characters;
-import javax.xml.stream.events.EndElement;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
-
-import com.evernote.edam.type.Data;
-import com.evernote.edam.type.Note;
-import com.evernote.edam.type.Resource;
-import com.syncthemall.enml4j.converter.BaseConverter;
-import com.syncthemall.enml4j.converter.Converter;
-import com.syncthemall.enml4j.converter.MediaConverter;
-import com.syncthemall.enml4j.impl.DefaultCryptTagConverter;
-import com.syncthemall.enml4j.impl.DefaultInlineMediaTagConverter;
-import com.syncthemall.enml4j.impl.DefaultMediaTagConverter;
-import com.syncthemall.enml4j.impl.DefaultNoteTagConverter;
-import com.syncthemall.enml4j.impl.DefaultTodoTagConverter;
-import com.syncthemall.enml4j.util.Elements;
-import com.syncthemall.enml4j.util.Utils;
+import static com.syncthemall.enml4j.util.Constants.ALT;
+import static com.syncthemall.enml4j.util.Constants.CHARSET;
+import static com.syncthemall.enml4j.util.Constants.CRYPT;
+import static com.syncthemall.enml4j.util.Constants.HASH;
+import static com.syncthemall.enml4j.util.Constants.HEIGHT;
+import static com.syncthemall.enml4j.util.Constants.MEDIA;
+import static com.syncthemall.enml4j.util.Constants.NOTE;
+import static com.syncthemall.enml4j.util.Constants.TODO;
+import static com.syncthemall.enml4j.util.Constants.TYPE;
+import static com.syncthemall.enml4j.util.Constants.WIDTH;
 
 /**
  * The entry point of ENML4j.
@@ -106,7 +105,7 @@ import com.syncthemall.enml4j.util.Utils;
  * @see <a href="http://dev.evernote.com/start/core/enml.php">Understanding the Evernote Markup Language</a>
  * @see <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnbdv.html">Streaming API for XML</a>
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public class ENMLProcessor {
 

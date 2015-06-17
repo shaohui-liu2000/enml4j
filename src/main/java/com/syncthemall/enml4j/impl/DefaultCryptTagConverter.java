@@ -22,18 +22,17 @@
  */
 package com.syncthemall.enml4j.impl;
 
-import static com.syncthemall.enml4j.util.Constants.SPAN;
-
-import java.util.List;
-
-import javax.xml.stream.events.Characters;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
-
 import com.evernote.edam.type.Note;
 import com.syncthemall.enml4j.converter.BaseConverter;
 import com.syncthemall.enml4j.converter.Converter;
 import com.syncthemall.enml4j.util.Elements;
+
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+import java.util.List;
+
+import static com.syncthemall.enml4j.util.Constants.SPAN;
 
 /**
  * Default {@code Converter} implementation to convert {@code <en-crypt>} ENML tags.
@@ -49,7 +48,7 @@ import com.syncthemall.enml4j.util.Elements;
  * @see <a href="http://dev.evernote.com/start/core/enml.php">Understanding the Evernote Markup Language</a>
  * @see <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnbdv.html">Streaming API for XML</a>
  * 
- * @author Pierre-Denis Vanduynslager <pierre.denis.vanduynslager@gmail.com>
+ * @author Pierre-Denis Vanduynslager pierre.denis.vanduynslager@gmail.com
  */
 public class DefaultCryptTagConverter extends BaseConverter {
 
